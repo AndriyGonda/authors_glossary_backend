@@ -7,6 +7,8 @@ from flask_restful import Api
 from app.models import db
 from app.schemas import ma
 
+from app.resources.users import Users
+
 
 def create_app():
     app = Flask(__name__)
@@ -19,4 +21,5 @@ def create_app():
     db.init_app(app)
     ma.init_app(app)
     api = Api(app, prefix='/api')
+    api.add_resource(Users, '/users')
     return app
